@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>2024 Calendar</title>
+<style>
+*, *::before, *::after
+{
+  box-sizing: inherit;
+}
+
+html
+{
+  box-sizing:border-box;
+  --grid-gap: 1px;
+}
+.eventInfo
+{
+  display:grid;
+  font-size:0.75rem;
+  grid-template-columns: 3.5em 1fr;
+  margin-bottom:0.5em;
+}
+.eventInfo .time
+{
+  display:block;
+}
+.eventInfo .teams
+{
+  font-weight:bold;
+}
+.eventInfo .venue
+{
+  font-size:0.9em;
+  font-style:italic;
+  margin-bottom:0.25em;
+}
+.eventDetails .tv,
+.eventDetails .streaming
+{
+  line-height:1.4em;
+  padding-left:1.7em;
+  text-indent:-1.7em;
+}
+.eventDetails span
+{
+  font-weight:bold;
+  padding:0.08em 0.25em;
+}
+.eventDetails .CBC { background-color: red;  color: white; }
+.eventDetails .GEM { background-color: rgb(255, 199, 225);  color: black; }
+.eventDetails .RC { background-color: rgb(157, 55, 174);  color: white; }
+.eventDetails .ICI { background-color: rgb(241, 168, 255);  color: black; }
+.eventDetails .TSN { background-color: black;  color: white; }
+.eventDetails .TSNP { background-color: rgb(220, 203, 203);  color: black; }
+.eventDetails .RDS { background-color: rgb(47, 96, 21);  color: white; }
+.eventDetails .SN { background-color: rgb(27, 84, 177);  color: white; }
+.eventDetails .SNP { background-color: rgb(189, 209, 255);  color: black; }
+
+.eventDetails .YT { background-color: rgb(255, 234, 214);  color: black; }
+
+.eventDetails .MSG { background-color: rgb(33, 123, 145);  color: white; }
+.eventDetails .NESN { background-color: rgb(154, 91, 40);  color: white; }
+.eventDetails .PIT { background-color: rgb(107, 44, 125);  color: white; }
+
+
+.legend {
+  font-size:0.8em;
+  margin-top:0.5em;
+}
+html
+{
+  font-family:Verdana,Helvetica,Arial,sans-serif;
+  padding:0;
+}
+.calendar h1 {
+  font-size:1.6em;
+  font-weight:bold;
+  margin:0 0 2rem;
+  text-align:center;
+}
+.calendar
+{
+}
+.dayNames, .dateGrid
+{
+  display: grid;
+  grid-gap: var(--grid-gap);
+  grid-template-columns: repeat(7, 1fr);
+  list-style:none;
+}
+.dateGrid li
+{
+  min-height:2rem;
+  outline: var(--grid-gap) rgb(75%,75%,75%) solid;
+  padding:0.25em;
+  position:relative;
+}
+.dateGrid li[data-firstDayPosition="1"]
+{
+  grid-column-start: 1;
+}
+.dateGrid li[data-firstDayPosition="2"]
+{
+  grid-column-start: 2;
+}
+.dateGrid li[data-firstDayPosition="3"]
+{
+  grid-column-start: 3;
+}
+.dateGrid li[data-firstDayPosition="4"]
+{
+  grid-column-start: 4;
+}
+.dateGrid li[data-firstDayPosition="5"]
+{
+  grid-column-start: 5;
+}
+.dateGrid li[data-firstDayPosition="6"]
+{
+  grid-column-start: 6;
+}
+.dateGrid li[data-firstDayPosition="7"]
+{
+  grid-column-start: 7;
+}
+.dateLabel
+{
+  background-color: rgb(95%, 95%, 95%);
+    font-family:system-ui;
+  font-size:0.8rem;
+  padding:0.25em;
+  position:absolute;
+  right:0;
+  text-align:center;
+  width: 2em;
+}
+.calendar .month
+{
+  border:1px solid rgb(10%, 10%, 10%);
+  margin-bottom:2rem;
+  padding: 1rem;
+  page-break-inside:avoid;
+}
+.calendar .dayNames li
+{
+  font-weight:bold;
+  text-align:center;
+}
+</style>
+</head>
+<body>
+<div class="calendar">
+  <div class="month">
+  <h2>January 2024</h2>
+  <ol class="dayNames">
+    <li class="weekDay">Sunday</li>
+    <li class="weekDay">Monday</li>
+    <li class="weekDay">Tuesday</li>
+    <li class="weekDay">Wednesday</li>
+    <li class="weekDay">Thursday</li>
+    <li class="weekDay">Friday</li>
+    <li class="weekDay">Saturday</li>
+  </ol>
+  <ol class="dateGrid"><li data-firstDayPosition="2"><div class="dateLabel">1</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">12:30</span>
+<div class="eventDetails">
+  <div class="teams">NY at TOR</div>
+  <div class="venue">Mattamy</div>
+  <div class="tv">&#x1F4FA <span class="CBC">CBC</span> <span class="SN">SN</span> <span class="TSN">TSN</span> <span class="MSG">MSG</span> <span class="NESN">NESN</span> <span class="PIT">Pit</span></div>
+  <div class="streaming">&#x1F310 <span class="GEM">Gem</span> <span class="YT">YT</span> <span class="ICI">ICI</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">2</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">MON at OTT</div>
+  <div class="venue">TD Place Arena</div>
+  <div class="tv">&#x1F4FA <span class="TSN">TSN</span> <span class="RDS">RDS</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">3</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">MIN at BOS</div>
+  <div class="venue">Tsongas Centre</div>
+  <div class="tv">&#x1F4FA <span class="NESN">NESN</span> <span class="TSN">TSN</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">4</div></li><li><div class="dateLabel">5</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">TOR at NY</div>
+  <div class="venue">Total Mortgage</div>
+  <div class="tv">&#x1F4FA <span class="MSG">MSG</span> <span class="SN">SN</span></div>
+  <div class="streaming">&#x1F310 <span class="SNP">SN+</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">6</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">3:30</span>
+<div class="eventDetails">
+  <div class="teams">MON at MIN</div>
+  <div class="venue">Xcel Energy Center</div>
+  <div class="tv">&#x1F4FA <span class="CBC">CBC</span> <span class="PIT">Pit</span> <span class="RDS">RDS</span></div>
+  <div class="streaming">&#x1F310 <span class="GEM">Gem</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">7</div></li><li><div class="dateLabel">8</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">6:00</span>
+<div class="eventDetails">
+  <div class="teams">OTT at BOS</div>
+  <div class="venue">Tsongas Centre</div>
+  <div class="tv">&#x1F4FA <span class="NESN">NESN</span> <span class="TSN">TSN</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">9</div></li><li><div class="dateLabel">10</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">MON at NY</div>
+  <div class="venue">UBS Arena</div>
+  <div class="tv">&#x1F4FA <span class="MSG">MSG</span> <span class="RDS">RDS</span></div>
+  <div class="streaming">&#x1F310 <span class="TSNP">TSN+</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">8:00</span>
+<div class="eventDetails">
+  <div class="teams">TOR at MIN</div>
+  <div class="venue">Xcel Energy Center</div>
+  <div class="tv">&#x1F4FA <span class="NESN">NESN</span> <span class="PIT">Pit</span> <span class="TSN">TSN</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">11</div></li><li><div class="dateLabel">12</div></li><li><div class="dateLabel">13</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">1:00</span>
+<div class="eventDetails">
+  <div class="teams">OTT at TOR</div>
+  <div class="venue">Mattamy</div>
+  <div class="tv">&#x1F4FA <span class="CBC">CBC</span></div>
+  <div class="streaming">&#x1F310 <span class="GEM">Gem</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">3:30</span>
+<div class="eventDetails">
+  <div class="teams">BOS at MON</div>
+  <div class="venue">Verdun Auditorium</div>
+  <div class="tv">&#x1F4FA <span class="CBC">CBC</span> <span class="NESN">NESN</span> <span class="RC">RC</span></div>
+  <div class="streaming">&#x1F310 <span class="GEM">Gem</span> <span class="YT">YT</span> <span class="ICI">ICI</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">14</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">4:00</span>
+<div class="eventDetails">
+  <div class="teams">NY at MIN</div>
+  <div class="venue">Xcel Energy Center</div>
+  <div class="tv">&#x1F4FA <span class="MSG">MSG</span> <span class="NESN">NESN</span> <span class="SN">SN</span></div>
+  <div class="streaming">&#x1F310 <span class="SNP">SN+</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">15</div></li><li><div class="dateLabel">16</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">NY at MON</div>
+  <div class="venue">Place Bell</div>
+  <div class="tv">&#x1F4FA <span class="MSG">MSG</span> <span class="SN">SN</span> <span class="RDS">RDS</span></div>
+  <div class="streaming">&#x1F310 <span class="SNP">SN+</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">17</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">BOS at TOR</div>
+  <div class="venue">Mattamy</div>
+  <div class="tv">&#x1F4FA <span class="TSN">TSN</span> <span class="NESN">NESN</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">MIN at OTT</div>
+  <div class="venue">TD Place Arena</div>
+  <div class="streaming">&#x1F310 <span class="TSNP">TSN+</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">18</div></li><li><div class="dateLabel">19</div></li><li><div class="dateLabel">20</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">12:30</span>
+<div class="eventDetails">
+  <div class="teams">NY at BOS</div>
+  <div class="venue">Tsongas Centre</div>
+  <div class="tv">&#x1F4FA <span class="MSG">MSG</span> <span class="NESN">NESN</span> <span class="SN">SN</span></div>
+  <div class="streaming">&#x1F310 <span class="SNP">SN+</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">8:00</span>
+<div class="eventDetails">
+  <div class="teams">TOR at MON</div>
+  <div class="venue">Verdun Auditorium</div>
+  <div class="streaming">&#x1F310 <span class="GEM">Gem</span> <span class="YT">YT</span> <span class="ICI">ICI</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">21</div></li><li><div class="dateLabel">22</div></li><li><div class="dateLabel">23</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">TOR at OTT</div>
+  <div class="venue">TD Place Arena</div>
+  <div class="tv">&#x1F4FA <span class="SN">SN</span></div>
+  <div class="streaming">&#x1F310 <span class="SNP">SN+</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">24</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">BOS at OTT</div>
+  <div class="venue">TD Place Arena</div>
+  <div class="tv">&#x1F4FA <span class="TSN">TSN</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">8:00</span>
+<div class="eventDetails">
+  <div class="teams">MON at MIN</div>
+  <div class="venue">Xcel Energy Center</div>
+  <div class="streaming">&#x1F310 <span class="TSNP">TSN+</span> <span class="YT">YT</span> <span class="ICI">ICI</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">25</div></li><li><div class="dateLabel">26</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">NY at TOR</div>
+  <div class="venue">Mattamy</div>
+  <div class="tv">&#x1F4FA <span class="TSN">TSN</span> <span class="MSG">MSG</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">27</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">3:30</span>
+<div class="eventDetails">
+  <div class="teams">OTT at MON</div>
+  <div class="venue">Place Bell</div>
+  <div class="tv">&#x1F4FA <span class="CBC">CBC</span> <span class="RDS">RDS</span></div>
+  <div class="streaming">&#x1F310 <span class="GEM">Gem</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">4:00</span>
+<div class="eventDetails">
+  <div class="teams">MIN at BOS</div>
+  <div class="venue">Tsongas Centre</div>
+  <div class="tv">&#x1F4FA <span class="NESN">NESN</span> <span class="SN">SN</span></div>
+  <div class="streaming">&#x1F310 <span class="SNP">SN+</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">28</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">1:00</span>
+<div class="eventDetails">
+  <div class="teams">MIN at NY</div>
+  <div class="venue">Total Mortgage</div>
+  <div class="tv">&#x1F4FA <span class="MSG">MSG</span> <span class="SN">SN</span></div>
+  <div class="streaming">&#x1F310 <span class="SNP">SN+</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">29</div></li><li><div class="dateLabel">30</div></li><li><div class="dateLabel">31</div></li>  </ol><!-- dateGrid -->
+<div class="legend">
+All times Eastern.&emsp;
+<span class="eventDetails">
+<span class="PIT">Pit</span> &ndash; Sportsnet Pittsburgh&emsp;
+<span class="GEM">Gem</span> &ndash; CBC Gem&emsp;
+<span class="ICI">ICI</span> &ndash; ICI TOU.TV&emsp;
+<span class="YT">YT</span> &ndash; PWHL YouTube channel
+</span>
+
+</div>
+
+</div><!-- month -->
+  <div class="month">
+  <h2>February 2024</h2>
+  <ol class="dayNames">
+    <li class="weekDay">Sunday</li>
+    <li class="weekDay">Monday</li>
+    <li class="weekDay">Tuesday</li>
+    <li class="weekDay">Wednesday</li>
+    <li class="weekDay">Thursday</li>
+    <li class="weekDay">Friday</li>
+    <li class="weekDay">Saturday</li>
+  </ol>
+  <ol class="dateGrid"><li data-firstDayPosition="5"><div class="dateLabel">1</div></li><li><div class="dateLabel">2</div></li><li><div class="dateLabel">3</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">12:00</span>
+<div class="eventDetails">
+  <div class="teams">MIN at TOR</div>
+  <div class="venue">Mattamy</div>
+  <div class="tv">&#x1F4FA <span class="CBC">CBC</span></div>
+  <div class="streaming">&#x1F310 <span class="GEM">Gem</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">4</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">1:00</span>
+<div class="eventDetails">
+  <div class="teams">NY at OTT</div>
+  <div class="venue">TD Place Arena</div>
+  <div class="tv">&#x1F4FA <span class="SN">SN</span> <span class="MSG">MSG</span></div>
+  <div class="streaming">&#x1F310 <span class="SNP">SN+</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">3:30</span>
+<div class="eventDetails">
+  <div class="teams">MON at BOS</div>
+  <div class="venue">Tsongas Centre</div>
+  <div class="tv">&#x1F4FA <span class="NESN">NESN</span> <span class="TSN">TSN</span> <span class="RDS">RDS</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">5</div></li><li><div class="dateLabel">6</div></li><li><div class="dateLabel">7</div></li><li><div class="dateLabel">8</div></li><li><div class="dateLabel">9</div></li><li><div class="dateLabel">10</div></li><li><div class="dateLabel">11</div></li><li><div class="dateLabel">12</div></li><li><div class="dateLabel">13</div></li><li><div class="dateLabel">14</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">TOR at BOS</div>
+  <div class="venue">Tsongas Centre</div>
+  <div class="tv">&#x1F4FA <span class="NESN">NESN</span> <span class="TSN">TSN</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">8:00</span>
+<div class="eventDetails">
+  <div class="teams">OTT at MIN</div>
+  <div class="venue">Xcel Energy Center</div>
+  <div class="streaming">&#x1F310 <span class="TSNP">TSN+</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">15</div></li><li><div class="dateLabel">16</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">MON at TOR</div>
+  <div class="venue">Mattamy</div>
+  <div class="tv">&#x1F4FA <span class="TSN">TSN</span> <span class="RDS">RDS</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">17</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">2:00</span>
+<div class="eventDetails">
+  <div class="teams">MIN at OTT</div>
+  <div class="venue">TD Place Arena</div>
+  <div class="tv">&#x1F4FA <span class="SN">SN</span></div>
+  <div class="streaming">&#x1F310 <span class="SNP">SN+</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">4:00</span>
+<div class="eventDetails">
+  <div class="teams">NY at BOS</div>
+  <div class="venue">Tsongas Centre</div>
+  <div class="tv">&#x1F4FA <span class="NESN">NESN</span> <span class="MSG">MSG</span></div>
+  <div class="streaming">&#x1F310 <span class="GEM">Gem</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">18</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">1:00</span>
+<div class="eventDetails">
+  <div class="teams">MIN at MON</div>
+  <div class="venue">Place Bell</div>
+  <div class="tv">&#x1F4FA <span class="SN">SN</span> <span class="RDS">RDS</span></div>
+  <div class="streaming">&#x1F310 <span class="SNP">SN+</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">19</div></li><li><div class="dateLabel">20</div></li><li><div class="dateLabel">21</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">OTT at BOS</div>
+  <div class="venue">Tsongas Centre</div>
+  <div class="tv">&#x1F4FA <span class="NESN">NESN</span> <span class="TSN">TSN</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">MON at NY</div>
+  <div class="venue">UBS Arena</div>
+  <div class="tv">&#x1F4FA <span class="MSG">MSG</span> <span class="RDS">RDS</span></div>
+  <div class="streaming">&#x1F310 <span class="TSNP">TSN+</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">22</div></li><li><div class="dateLabel">23</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">NY at TOR</div>
+  <div class="venue">Mattamy</div>
+  <div class="tv">&#x1F4FA <span class="TSN">TSN</span> <span class="MSG">MSG</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">24</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">2:30</span>
+<div class="eventDetails">
+  <div class="teams">OTT at MON</div>
+  <div class="venue">Verdun Auditorium</div>
+  <div class="tv">&#x1F4FA <span class="SN">SN</span> <span class="RC">RC</span></div>
+  <div class="streaming">&#x1F310 <span class="SNP">SN+</span> <span class="YT">YT</span> <span class="ICI">ICI</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">25</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">4:00</span>
+<div class="eventDetails">
+  <div class="teams">BOS at MIN</div>
+  <div class="venue">Xcel Energy Center</div>
+  <div class="tv">&#x1F4FA <span class="NESN">NESN</span> <span class="SN">SN</span></div>
+  <div class="streaming">&#x1F310 <span class="SNP">SN+</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">26</div></li><li><div class="dateLabel">27</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">TBA</span>
+<div class="eventDetails">
+  <div class="teams">TOR at MIN</div>
+  <div class="venue">to be announced</div>
+  <div class="streaming">&#x1F310 <span class="GEM">Gem</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">28</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">NY at OTT</div>
+  <div class="venue">TD Place Arena</div>
+  <div class="tv">&#x1F4FA <span class="TSN">TSN</span> <span class="MSG">MSG</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">29</div></li>  </ol><!-- dateGrid -->
+<div class="legend">
+All times Eastern.&emsp;
+<span class="eventDetails">
+<span class="PIT">Pit</span> &ndash; Sportsnet Pittsburgh&emsp;
+<span class="GEM">Gem</span> &ndash; CBC Gem&emsp;
+<span class="ICI">ICI</span> &ndash; ICI TOU.TV&emsp;
+<span class="YT">YT</span> &ndash; PWHL YouTube channel
+</span>
+
+</div>
+
+</div><!-- month -->
+  <div class="month">
+  <h2>March 2024</h2>
+  <ol class="dayNames">
+    <li class="weekDay">Sunday</li>
+    <li class="weekDay">Monday</li>
+    <li class="weekDay">Tuesday</li>
+    <li class="weekDay">Wednesday</li>
+    <li class="weekDay">Thursday</li>
+    <li class="weekDay">Friday</li>
+    <li class="weekDay">Saturday</li>
+  </ol>
+  <ol class="dateGrid"><li data-firstDayPosition="6"><div class="dateLabel">1</div></li><li><div class="dateLabel">2</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">3:30</span>
+<div class="eventDetails">
+  <div class="teams">TOR at OTT</div>
+  <div class="venue">TD Place Arena</div>
+  <div class="tv">&#x1F4FA <span class="CBC">CBC</span></div>
+  <div class="streaming">&#x1F310 <span class="GEM">Gem</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">4:00</span>
+<div class="eventDetails">
+  <div class="teams">BOS at MON</div>
+  <div class="venue">Verdun Auditorium</div>
+  <div class="tv">&#x1F4FA <span class="NESN">NESN</span> <span class="RDS">RDS</span></div>
+  <div class="streaming">&#x1F310 <span class="GEM">Gem</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">3</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">12:30</span>
+<div class="eventDetails">
+  <div class="teams">MIN at NY</div>
+  <div class="venue">UBS Arena</div>
+  <div class="tv">&#x1F4FA <span class="MSG">MSG</span> <span class="TSN">TSN</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">4</div></li><li><div class="dateLabel">5</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">8:00</span>
+<div class="eventDetails">
+  <div class="teams">OTT at MIN</div>
+  <div class="venue">Xcel Energy Center</div>
+  <div class="tv">&#x1F4FA <span class="TSN">TSN</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">6</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">BOS at TOR</div>
+  <div class="venue">Mattamy</div>
+  <div class="tv">&#x1F4FA <span class="TSN">TSN</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">MON at NY</div>
+  <div class="venue">Total Mortgage</div>
+  <div class="tv">&#x1F4FA <span class="MSG">MSG</span></div>
+  <div class="streaming">&#x1F310 <span class="TSNP">TSN+</span> <span class="YT">YT</span> <span class="ICI">ICI</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">7</div></li><li><div class="dateLabel">8</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">MON at TOR</div>
+  <div class="venue">Mattamy</div>
+  <div class="tv">&#x1F4FA <span class="SN">SN</span></div>
+  <div class="streaming">&#x1F310 <span class="SNP">SN+</span> <span class="YT">YT</span> <span class="ICI">ICI</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">9</div></li><li><div class="dateLabel">10</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">3:30</span>
+<div class="eventDetails">
+  <div class="teams">NY at BOS</div>
+  <div class="venue">Tsongas Centre</div>
+  <div class="tv">&#x1F4FA <span class="NESN">NESN</span> <span class="MSG">MSG</span></div>
+  <div class="streaming">&#x1F310 <span class="GEM">Gem</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">4:00</span>
+<div class="eventDetails">
+  <div class="teams">OTT at MON</div>
+  <div class="venue">Place Bell</div>
+  <div class="tv">&#x1F4FA <span class="SN">SN</span></div>
+  <div class="streaming">&#x1F310 <span class="SNP">SN+</span> <span class="YT">YT</span> <span class="ICI">ICI</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">11</div></li><li><div class="dateLabel">12</div></li><li><div class="dateLabel">13</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">8:00</span>
+<div class="eventDetails">
+  <div class="teams">BOS at MIN</div>
+  <div class="venue">Xcel Energy Center</div>
+  <div class="tv">&#x1F4FA <span class="NESN">NESN</span> <span class="TSN">TSN</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">14</div></li><li><div class="dateLabel">15</div></li><li><div class="dateLabel">16</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">3:30</span>
+<div class="eventDetails">
+  <div class="teams">NY at MIN</div>
+  <div class="venue">Xcel Energy Center</div>
+  <div class="tv">&#x1F4FA <span class="MSG">MSG</span> <span class="CBC">CBC</span></div>
+  <div class="streaming">&#x1F310 <span class="GEM">Gem</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">TBA</span>
+<div class="eventDetails">
+  <div class="teams">OTT at BOS</div>
+  <div class="venue">to be announced</div>
+  <div class="tv">&#x1F4FA <span class="SN">SN</span></div>
+  <div class="streaming">&#x1F310 <span class="SNP">SN+</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">TBA</span>
+<div class="eventDetails">
+  <div class="teams">TOR at MON</div>
+  <div class="venue">to be announced</div>
+  <div class="tv">&#x1F4FA <span class="RDS">RDS</span></div>
+  <div class="streaming">&#x1F310 <span class="GEM">Gem</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">17</div></li><li><div class="dateLabel">18</div></li><li><div class="dateLabel">19</div></li><li><div class="dateLabel">20</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">BOS at TOR</div>
+  <div class="venue">Mattamy</div>
+  <div class="tv">&#x1F4FA <span class="TSN">TSN</span> <span class="NESN">NESN</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">OTT at NY</div>
+  <div class="venue">Total Mortgage</div>
+  <div class="tv">&#x1F4FA <span class="MSG">MSG</span></div>
+  <div class="streaming">&#x1F310 <span class="TSNP">TSN+</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">21</div></li><li><div class="dateLabel">22</div></li><li><div class="dateLabel">23</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">3:30</span>
+<div class="eventDetails">
+  <div class="teams">TOR at OTT</div>
+  <div class="venue">TD Place Arena</div>
+  <div class="tv">&#x1F4FA <span class="TSN">TSN</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">24</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">4:00</span>
+<div class="eventDetails">
+  <div class="teams">MON at MIN</div>
+  <div class="venue">Xcel Energy Center</div>
+  <div class="tv">&#x1F4FA <span class="SN">SN</span></div>
+  <div class="streaming">&#x1F310 <span class="SNP">SN+</span> <span class="YT">YT</span> <span class="ICI">ICI</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">25</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">BOS at NY</div>
+  <div class="venue">UBS Arena</div>
+  <div class="tv">&#x1F4FA <span class="MSG">MSG</span> <span class="NESN">NESN</span></div>
+  <div class="streaming">&#x1F310 <span class="GEM">Gem</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">26</div></li><li><div class="dateLabel">27</div></li><li><div class="dateLabel">28</div></li><li><div class="dateLabel">29</div></li><li><div class="dateLabel">30</div></li><li><div class="dateLabel">31</div></li>  </ol><!-- dateGrid -->
+<div class="legend">
+All times Eastern.&emsp;
+<span class="eventDetails">
+<span class="PIT">Pit</span> &ndash; Sportsnet Pittsburgh&emsp;
+<span class="GEM">Gem</span> &ndash; CBC Gem&emsp;
+<span class="ICI">ICI</span> &ndash; ICI TOU.TV&emsp;
+<span class="YT">YT</span> &ndash; PWHL YouTube channel
+</span>
+
+</div>
+
+</div><!-- month -->
+  <div class="month">
+  <h2>April 2024</h2>
+  <ol class="dayNames">
+    <li class="weekDay">Sunday</li>
+    <li class="weekDay">Monday</li>
+    <li class="weekDay">Tuesday</li>
+    <li class="weekDay">Wednesday</li>
+    <li class="weekDay">Thursday</li>
+    <li class="weekDay">Friday</li>
+    <li class="weekDay">Saturday</li>
+  </ol>
+  <ol class="dateGrid"><li data-firstDayPosition="2"><div class="dateLabel">1</div></li><li><div class="dateLabel">2</div></li><li><div class="dateLabel">3</div></li><li><div class="dateLabel">4</div></li><li><div class="dateLabel">5</div></li><li><div class="dateLabel">6</div></li><li><div class="dateLabel">7</div></li><li><div class="dateLabel">8</div></li><li><div class="dateLabel">9</div></li><li><div class="dateLabel">10</div></li><li><div class="dateLabel">11</div></li><li><div class="dateLabel">12</div></li><li><div class="dateLabel">13</div></li><li><div class="dateLabel">14</div></li><li><div class="dateLabel">15</div></li><li><div class="dateLabel">16</div></li><li><div class="dateLabel">17</div></li><li><div class="dateLabel">18</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">TOR at BOS</div>
+  <div class="venue">Tsongas Centre</div>
+  <div class="tv">&#x1F4FA <span class="NESN">NESN</span> <span class="TSN">TSN</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">19</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">NY at MON</div>
+  <div class="venue">Verdun Auditorium</div>
+  <div class="tv">&#x1F4FA <span class="TSN">TSN</span> <span class="MSG">MSG</span> <span class="RDS">RDS</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">20</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">TBA</span>
+<div class="eventDetails">
+  <div class="teams">MIN at OTT</div>
+  <div class="venue">TD Place Arena</div>
+  <div class="tv">&#x1F4FA <span class="CBC">CBC</span></div>
+  <div class="streaming">&#x1F310 <span class="GEM">Gem</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">21</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">TBA</span>
+<div class="eventDetails">
+  <div class="teams">TOR at MON</div>
+  <div class="venue">Verdun Auditorium</div>
+  <div class="tv">&#x1F4FA <span class="RDS">RDS</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">TBA</span>
+<div class="eventDetails">
+  <div class="teams">BOS at NY</div>
+  <div class="venue">to be announced</div>
+  <div class="tv">&#x1F4FA <span class="MSG">MSG</span> <span class="NESN">NESN</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">22</div></li><li><div class="dateLabel">23</div></li><li><div class="dateLabel">24</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">TBA</span>
+<div class="eventDetails">
+  <div class="teams">BOS at OTT</div>
+  <div class="venue">TD Place Arena</div>
+  <div class="tv">&#x1F4FA <span class="TSN">TSN</span> <span class="NESN">NESN</span></div>
+  <div class="streaming">&#x1F310 <span class="TSNP">TSN+</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">MIN at MON</div>
+  <div class="venue">Verdun Auditorium</div>
+  <div class="tv">&#x1F4FA <span class="TSN">TSN</span> <span class="RDS">RDS</span></div>
+  <div class="streaming">&#x1F310 <span class="TSNP">TSN+</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:00</span>
+<div class="eventDetails">
+  <div class="teams">TOR at NY</div>
+  <div class="venue">Total Mortgage</div>
+  <div class="tv">&#x1F4FA <span class="TSN">TSN</span></div>
+  <div class="streaming">&#x1F310 <span class="TSNP">TSN+</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">25</div></li><li><div class="dateLabel">26</div></li><li><div class="dateLabel">27</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">TBA</span>
+<div class="eventDetails">
+  <div class="teams">BOS at MIN</div>
+  <div class="venue">to be announced</div>
+  <div class="tv">&#x1F4FA <span class="NESN">NESN</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">TBA</span>
+<div class="eventDetails">
+  <div class="teams">MON at OTT</div>
+  <div class="venue">TD Place Arena</div>
+  <div class="tv">&#x1F4FA <span class="CBC">CBC</span> <span class="RDS">RDS</span></div>
+  <div class="streaming">&#x1F310 <span class="GEM">Gem</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">28</div></li><li><div class="dateLabel">29</div></li><li><div class="dateLabel">30</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">TBA</span>
+<div class="eventDetails">
+  <div class="teams">OTT at NY</div>
+  <div class="venue">to be announced</div>
+  <div class="tv">&#x1F4FA <span class="TSN">TSN</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li>  </ol><!-- dateGrid -->
+<div class="legend">
+All times Eastern.&emsp;
+<span class="eventDetails">
+<span class="PIT">Pit</span> &ndash; Sportsnet Pittsburgh&emsp;
+<span class="GEM">Gem</span> &ndash; CBC Gem&emsp;
+<span class="ICI">ICI</span> &ndash; ICI TOU.TV&emsp;
+<span class="YT">YT</span> &ndash; PWHL YouTube channel
+</span>
+
+</div>
+
+</div><!-- month -->
+  <div class="month">
+  <h2>May 2024</h2>
+  <ol class="dayNames">
+    <li class="weekDay">Sunday</li>
+    <li class="weekDay">Monday</li>
+    <li class="weekDay">Tuesday</li>
+    <li class="weekDay">Wednesday</li>
+    <li class="weekDay">Thursday</li>
+    <li class="weekDay">Friday</li>
+    <li class="weekDay">Saturday</li>
+  </ol>
+  <ol class="dateGrid"><li data-firstDayPosition="4"><div class="dateLabel">1</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">7:30</span>
+<div class="eventDetails">
+  <div class="teams">MIN at TOR</div>
+  <div class="venue">Mattamy</div>
+  <div class="tv">&#x1F4FA <span class="TSN">TSN</span></div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">2</div></li><li><div class="dateLabel">3</div></li><li><div class="dateLabel">4</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">3:30</span>
+<div class="eventDetails">
+  <div class="teams">MON at BOS</div>
+  <div class="venue">Tsongas Centre</div>
+  <div class="tv">&#x1F4FA <span class="CBC">CBC</span> <span class="RDS">RDS</span></div>
+  <div class="streaming">&#x1F310 <span class="GEM">Gem</span> <span class="YT">YT</span></div>
+
+</div>
+</div>
+<div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">TBA</span>
+<div class="eventDetails">
+  <div class="teams">MIN at NY</div>
+  <div class="venue">to be announced</div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">5</div><div class="eventInfoWrapper"><div class="eventInfo">
+<span class="time">TBA</span>
+<div class="eventDetails">
+  <div class="teams">OTT at TOR</div>
+  <div class="venue">Mattamy</div>
+  <div class="streaming">&#x1F310 <span class="YT">YT</span></div>
+
+</div>
+</div>
+</li><li><div class="dateLabel">6</div></li><li><div class="dateLabel">7</div></li><li><div class="dateLabel">8</div></li><li><div class="dateLabel">9</div></li><li><div class="dateLabel">10</div></li><li><div class="dateLabel">11</div></li><li><div class="dateLabel">12</div></li><li><div class="dateLabel">13</div></li><li><div class="dateLabel">14</div></li><li><div class="dateLabel">15</div></li><li><div class="dateLabel">16</div></li><li><div class="dateLabel">17</div></li><li><div class="dateLabel">18</div></li><li><div class="dateLabel">19</div></li><li><div class="dateLabel">20</div></li><li><div class="dateLabel">21</div></li><li><div class="dateLabel">22</div></li><li><div class="dateLabel">23</div></li><li><div class="dateLabel">24</div></li><li><div class="dateLabel">25</div></li><li><div class="dateLabel">26</div></li><li><div class="dateLabel">27</div></li><li><div class="dateLabel">28</div></li><li><div class="dateLabel">29</div></li><li><div class="dateLabel">30</div></li><li><div class="dateLabel">31</div></li>  </ol><!-- dateGrid -->
+<div class="legend">
+All times Eastern.&emsp;
+<span class="eventDetails">
+<span class="PIT">Pit</span> &ndash; Sportsnet Pittsburgh&emsp;
+<span class="GEM">Gem</span> &ndash; CBC Gem&emsp;
+<span class="ICI">ICI</span> &ndash; ICI TOU.TV&emsp;
+<span class="YT">YT</span> &ndash; PWHL YouTube channel
+</span>
+
+</div>
+
+</div><!-- month -->
+</div><!-- #calendar -->
+</body>
+</html>
